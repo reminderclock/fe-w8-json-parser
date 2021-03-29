@@ -1,0 +1,29 @@
+#root {
+  display: flex;
+  align-items: center;
+}
+
+.input-container {
+  &__title {
+    font-size: 20px;
+  }
+
+  &__box {
+    input {
+      width: 400px;
+      height: 400px;
+    }
+  }
+}
+
+.output-container {
+  &__title {
+    font-size: 20px;
+  }
+  &__box {
+    input {
+      width: 400px;
+      height: 800px;
+    }
+  }
+}

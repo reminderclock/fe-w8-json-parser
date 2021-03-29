@@ -1,7 +1,7 @@
 const _ = {
   $: (selector, base = document) => base.querySelector(selector),
   $All: (selector, base = document) => base.querySelectorAll(selector),
-  $Remove: selector => {
+  $Remove: (selector) => {
     const el = _.$(`${selector}`);
     el.remove();
   },
@@ -14,7 +14,7 @@ const _ = {
   replace: (el, oldName, newName) => el?.classList.replace(oldName, newName),
   contains: (el, className) => el?.classList.contains(className),
 
-  delay: time => new Promise(resolve => setTimeout(() => resolve(), time)),
+  delay: (time) => new Promise((resolve) => setTimeout(() => resolve(), time)),
 
   debounce: (func, delay) => {
     let timer;

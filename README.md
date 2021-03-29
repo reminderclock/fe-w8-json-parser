@@ -18,3 +18,14 @@
 
 문제를 단순화 해서 해결해본다. 예를들어 이런 문자열부터 분석해보기
 const data = "[1]"
+
+## Parser Array 를 어떻게 만들까
+
+1. json data가 오면 시작과 끝에 `을 추가한다. (string으로 변환)
+2. split(' '), whitespace를 기준으로 잘라서 배열을 만든다.
+3. 각 요소를 탐색하며 data를 파싱한다.
+   3-1. data 형식
+   - {
+     type: "object",
+     child: ""
+     }
