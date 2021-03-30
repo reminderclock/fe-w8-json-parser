@@ -1,0 +1,46 @@
+#root {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 100px;
+}
+
+i {
+  font-size: 50px;
+}
+
+.input-container {
+  &__title {
+    font-size: 20px;
+  }
+
+  &__box {
+    input {
+      width: 400px;
+      height: 400px;
+    }
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    button {
+      width: 200px;
+      height: 80px;
+      font-size: 20px;
+    }
+  }
+}
+
+.output-container {
+  &__title {
+    font-size: 20px;
+  }
+  &__box {
+    input {
+      width: 400px;
+      height: 800px;
+    }
+  }
+}
