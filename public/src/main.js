@@ -1,69 +1,62 @@
 import '../scss/style.scss';
 import MainView from '../view/view';
-import packageJson from '../../package.json';
-
-const packageJsonData = JSON.stringify(packageJson);
-console.log(packageJsonData);
 
 const mainView = new MainView();
 
-const dataJson = [
-  '1a3',
-  [null, false, ['11', [112233], { easy: ['hello', { a: 'a' }, 'world'] }, 112], 55, '99'],
-  { a: 'str', b: [912, [5656, 33], { key: 'innervalue', newkeys: [1, 2, 3, 4, 5] }] },
-  true,
-];
-
-const jsonData = JSON.parse(JSON.stringify(dataJson));
-
-const parserObject = {
-  identifier: [],
-  keyword: [],
-  seperator: [],
-  operator: [],
-  literal: [],
-  comment: [],
-};
-
-const tokenList = [];
-
-function getTokenList(data) {
-  data.forEach((el) => {
-    console.log(el);
-    console.log(typeof el);
-    switch (typeof el) {
-      case 'string':
-      case 'number':
-      case 'boolean':
-      case 'null':
-        pushToken(el);
-        break;
-      case 'object':
-        checkObject(el);
-        break;
-      default:
-        break;
+const inputData = '["1a3",["she\'s gone", null,false,["11",[112233],{"easy" : ["hel]lo", {"a":"a"}, "world"]},112],55, "99"],{"a":"str", "b":[912,[5656,33],{"key" : "innervalue", "newkeys": [1,2,3,4,5]}]}, true]';
+const saperatorArr= ['[',']',',','{','}',':'];
+const tokenArr = [];
+const stack = [];
+function getToken(inputData) {
+  for(let i=0; i<inputData.length; i++) {
+    if(isQuote(inputData[i]) && !isFullSatck()) {
+      stack.push(inputData[i])
+      pushToken(inputData[i])
+      continue
     }
-  });
-  return tokenList;
-}
+    else if (isQuote(inputData[i]) && isFullSatck()) {
+      stack.pop();
+    }
 
-function pushToken(data) {
-  tokenList.push(data);
-}
+    if(isSaperator(inputData[i]) && !isFullSatck()) {
+      pushToken(inputData[i])
+    }
 
-function checkObject(data) {
-  if (data === null) return pushToken(data);
-  if (Array.isArray(data)) {
-    return getTokenList(data);
-  } else {
-    return getObjectToken(data);
+    else if(isSaperator(inputData[i-1]) && isNotFisrt(i) && !isFullSatck()) {
+      pushToken(inputData[i])
+    }
+
+    else {
+      makeString(inputData[i]);
+    }
   }
+  const tokenList = tokenArr.map(el => el.trim());
+  console.log(tokenList);
+  return tokenArr;
+}
+function pushToken(data) {
+  tokenArr.push(data);
 }
 
-function getObjectToken(data) {
-  const objKey = Object.keys(data);
-  const objValue = Object.values(data);
-  getTokenList(objKey);
-  getTokenList(objValue);
+function makeString(data) {
+return tokenArr[tokenArr.length-1]+=data;
 }
+
+function isSaperator(data) {
+return saperatorArr.includes(data)
+}
+
+function isNotFisrt(idx) {
+return idx>=1
+}
+
+function isQuote(data) {
+return data === '"'
+}
+
+function isFullSatck() {
+return stack.length !==0
+}
+getToken(inputData.split(''));
+
+
