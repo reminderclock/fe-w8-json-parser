@@ -1,12 +1,13 @@
 import '../scss/style.scss';
 import MainView from '../view/view';
-
 import packageJson from '../../package.json';
 import { inputTitle } from './const';
 
-const packageJsonData = JSON.stringify(packageJson);
-console.log(packageJsonData);
 
+const inputData = '[1, 2, null, {"name":"crong", "class":2 }, "raccoon", [4, [ 5, true, 6], 7], 8, "luke"]';
+
+const mainView = new MainView();
+mainView.addEvent();
 const mainView = new MainView();
 
 const inputData = '["1a3",[null,false,["11",[112233],{"easy" : ["hello", {"a":"a"}, "world"]},112],55, "99"],{"a":"str", "b":[912,[5656,33],{"key" : "innervalue", "newkeys": [1,2,3,4,5]}]}, true]';
@@ -62,7 +63,6 @@ function getTokenString(data, idx) {
 }
 getTokenList(inputData);
 
-=======
 const mainView = new MainView();
 
 // import dataJson from "../data/data.js";
