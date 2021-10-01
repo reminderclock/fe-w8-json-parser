@@ -1,22 +1,23 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: "development",
-  entry: ["@babel/polyfill", "./public/src/main.js"],
-  devtool: "inline-source-map",
+  mode: 'development',
+  entry: ['@babel/polyfill', './public/src/main.js'],
+  devtool: 'inline-source-map',
   output: {
-    filename: "[name].[hash].js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: "http://localhost:3000",
+    filename: '[name].[hash].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: 'http://localhost:3000',
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
       {
         test: /\.scss$/,

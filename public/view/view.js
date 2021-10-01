@@ -1,3 +1,26 @@
+
+import { _ } from '../src/util.js';
+import { inputTitle, buttonName, outputTitle } from '../src/const.js';
+export default class MainView {
+  constructor() {
+    this.init();
+  }
+  init() {
+    const $root = _.$('#root');
+    return ($root.innerHTML = `
+        ${this.getInputContainer()}
+        ${this.getArrow()}
+        ${this.getOutputContainer()}
+        `);
+  }
+  getInputTitle(title) {
+    return `
+        <div class="input-container__title">${title}</div>
+        `;
+  }
+  getInputBox() {
+    return `
+
 import { _ } from "../src/util.js";
 import {inputTitle, buttonName, outputTitle} from "../src/const.js";
 export default class MainView {
@@ -23,6 +46,11 @@ export default class MainView {
         <input type="text" />
         </div>
         `;
+
+  }
+  getInputBtn(buttonName) {
+    return `
+
     }
     getInputBtn(buttonName) {
         return `
@@ -30,7 +58,9 @@ export default class MainView {
         <button>${buttonName}</button>
         </div>
         `;
-
+  }
+  getInputContainer() {
+    return `
     }
     getInputContainer() {
         return `
@@ -39,6 +69,32 @@ export default class MainView {
         ${this.getInputBox()}
         ${this.getInputBtn(buttonName)}
         </div>`;
+  }
+
+  getArrow() {
+    return `
+        <div>
+        <i class="fas fa-arrow-right"></i>
+        </div>
+        `;
+  }
+
+  getOutputTitle(outputTitle) {
+    return `
+        <div class="output-container__title">${outputTitle}</div>
+        `;
+  }
+
+  getOutputBox() {
+    return `
+        <div class="output-container__box">
+        <input type="text" />
+        </div>
+        `;
+  }
+
+  getOutputContainer() {
+    return `
     }
 
     getArrow() {
@@ -70,5 +126,8 @@ export default class MainView {
         ${this.getOutputBox()}
         </div>
         `;
+  }
+}
+
     }
     }
