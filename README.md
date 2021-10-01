@@ -254,6 +254,7 @@ const data = "[1]"
      child: ""
      }
 
+
 // identifier : 식별하기 위한 이름- > 변수명 dataArr,
 // keyword : 미리 지정한 예약어 -> ex) const, if, for, class, while, forEach..
 // separator : 글자를 구분하는 문자 -> 구분자 ex) {, }, [, ], ,
@@ -266,3 +267,4 @@ const data = "[1]"
 // speparator -> [] {} '' :
 // operator =>
 // literal => '11', 912, 'hello', 'world', true, Null, false
+

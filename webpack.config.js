@@ -1,3 +1,4 @@
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -20,20 +21,20 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ["style-loader", "css-loader", "sass-loader"],
         exclude: /node_modules/,
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: "./public/index.html",
     }),
     new CleanWebpackPlugin(),
   ],
   devServer: {
-    contentBase: path.resolve(__dirname + '/dist'),
-    index: 'index.html',
+    contentBase: path.resolve(__dirname + "/dist"),
+    index: "index.html",
     port: 3000,
     writeToDisk: true,
     hot: true,
